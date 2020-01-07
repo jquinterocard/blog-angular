@@ -1,0 +1,15 @@
+<!-- no existe el post -->
+<div class="col-md-12" *ngIf="!post">
+	Cargando...
+</div>
+
+<!-- si existe el post  -->
+<div class="col-md-12 mt-3" *ngIf="post">
+	<h3>{{post.title}}</h3>
+	<p>{{post.category.name}} - <a [routerLink]="['/perfil',post.user.id]"> {{post.user.name}} {{post.user.surname}}</a></p>
+	<hr>
+	<p [innerHtml]="post.content"></p>
+</div>
+
+
+

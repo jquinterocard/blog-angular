@@ -1,0 +1,35 @@
+<div class="loading" *ngIf="!posts">
+	Cargando...
+</div>
+
+<!-- mostrar contenido cuando exista posts -->
+<div class="container-fluid mt-3" *ngIf="posts">
+	<hr>
+	<div id="user-card">
+		<div class="avatar_mask_profile float-left mr-3">
+			<img src="{{url+'user/avatar/'+identity.image}}">
+		</div>
+		<div class="data_mask float-left">
+			<h1>Perfil de {{user.name}} {{user.surname}}</h1>
+			<p [innerHtml]="user.description"></p>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+
+
+	<hr>
+
+	<div class="alert alert-warning" *ngIf="posts && posts.length==0">
+		No hay entradas que mostrar en este perfil
+	</div>
+
+	<!-- listado de entradas -->
+	<!-- le paso los datos al componente hijo  -->
+	<post-list [posts]="posts"
+			   [identity]="identity"
+			   [url]="url"></post-list>
+	
+	
+</div>
+
+
